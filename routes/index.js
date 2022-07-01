@@ -5,4 +5,8 @@ console.log('*****route index has started ***');
 
 router.get('/',homeController.home);
 
+router.use('/users', require('./users'))
+
+router.use('/practice', require('./practice'));
+
 module.exports = router
