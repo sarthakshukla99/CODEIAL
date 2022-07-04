@@ -7,6 +7,5 @@ router.get('/',homeController.home);
 
 router.use('/users', require('./users'))
 
-router.use('/practice', require('./practice'));
-
+router.use('/practice',require('./practice'));
 module.exports = router
