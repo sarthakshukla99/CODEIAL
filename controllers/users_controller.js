@@ -5,6 +5,7 @@ module.exports.profile = function(req,res){
         User.findById(req.cookies.user_id,function(err,user){
             if(err){
                 console.log('error in geting data=>',err);
+                return res.redirect('/users/sign-in');
             }
             else if(user){
                 return res.render('user_profile',{
@@ -14,7 +15,7 @@ module.exports.profile = function(req,res){
             }
             return res.redirect('/users/sign-in');
         });
-
+        
     }else{
         return res.redirect('/users/sign-in');
     }
