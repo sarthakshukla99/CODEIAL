@@ -1,9 +1,23 @@
 const User = require('../models/user')
 
 module.exports.profile = function(req,res){
-    return res.render('user_profile',{
-        title: 'User Profile'
-    });
+    if(req.cookies.user_id){
+        User.findById(req.cookies.user_id,function(err,user){
+            if(err){
+                console.log('error in geting data=>',err);
+            }
+            else if(user){
+                return res.render('user_profile',{
+                    title: 'User Profile',
+                    user : user
+                });
+            }
+            return res.redirect('/users/sign-in');
+        });
+
+    }else{
+        return res.redirect('/users/sign-in');
+    }
 }
 
 // render the sing up page
@@ -27,7 +41,7 @@ module.exports.create = function(req,res){
     if(req.body.password != req.body.confirm_password){
         return res.redirect('back')
     }
-    // find for the user in db
+    // else if pass mateched then find for the user in db
     User.findOne({email: req.body.email},function(err,user){
         if(err){
             console.log('error in finding the user=>',err);
@@ -57,5 +71,40 @@ module.exports.create = function(req,res){
 
 
 module.exports.createSession = function(req,res){
-    //todo later
+    // steps to authenticate 
+    //find the user
+    User.findOne({email: req.body.email},function(err,user){
+        if(err){
+            console.log('error in finding the user in signin in =>',err);
+            return
+        }
+        //handle user found
+        if(user){
+            console.log('inside if user');
+            //if user found then we will handle password which dont match
+            if(user.password != req.body.password){
+                console.log('pass donot match and pass is', user.password,'reqPass = ', req.body.password);
+                return res.redirect('back');
+            }
+            
+            //if everything goes fine then handle session creation
+
+            res.cookie('user_id',user.id);
+            return res.redirect('/users/profile');
+
+
+        }else{
+            //handle user not found
+            return res.redirect('/users/profile');
+
+        }
+
+
+    })
+}
+
+
+module.exports.logout = function(req,res){
+    res.clearCookie('user_id');
+    res.redirect('/users/sign-in');
 }
