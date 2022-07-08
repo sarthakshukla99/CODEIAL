@@ -40,6 +40,7 @@ app.use(session({
 // to tell the app to use passport
 app.use(passport.initialize());
 app.use(passport.session()); // passport also helps in maintaining the sessions
+app.use(passport.setAuthenticatedUser);
 
 // use express router 
 app.use('/', require('./routes/index'))
