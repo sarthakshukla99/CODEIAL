@@ -1,0 +1,19 @@
+li {
+  list-style: none;
+}
+
+footer {
+  min-height: 10vh;
+  background-color: #57565B;
+  color: white;
+  display: flex;
+}
+
+footer .copyright {
+  margin: 0 18px;
+}
+
+footer .menu_links ul a {
+  color: white;
+  text-decoration: none;
+}

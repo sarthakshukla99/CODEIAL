@@ -1,0 +1,32 @@
+$base-color: #57565B;
+
+
+li{
+    list-style: none;
+}
+
+footer{
+    min-height: 10vh;
+    background-color: $base-color;
+    color: white;
+    display: flex;
+
+    .copyright{
+        margin: 0 18px;
+    }
+
+    .menu_links{
+        ul{
+
+            li{
+                
+                
+            }
+            a{
+                color: white;
+                text-decoration: none;
+            }
+
+        }
+    }
+}

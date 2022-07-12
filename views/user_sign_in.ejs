@@ -1,7 +1,15 @@
-<h1>sign in</h1>
-
-<form action="/users/create-session" method="POST">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="submit" value="Sign In">
-</form>
+<link rel="stylesheet" href="/css/user_sign_in.css">
+<div class="main_sign_in">
+    <div class="sign_in_container">
+        <h1>SIGN IN</h1>
+        
+        <div class="login_form">
+            <form action="/users/create-session" method="POST">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="submit" value="Sign In" class="submit_btn">
+            </form>
+            <p><a href="/users/sign-up">Not having any account | Sign Up</a></p>
+        </div>
+    </div>
+</div>

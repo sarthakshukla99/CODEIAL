@@ -1,0 +1,51 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1A5DB4;
+  color: white;
+  height: 7.5vh;
+  padding: 0 12px;
+}
+
+header .logo h1 {
+  font-size: 43px;
+}
+
+header .logo h1 a {
+  color: white;
+}
+
+header .logo h1 a i {
+  font-size: 38px;
+}
+
+header .menu {
+  height: 100%;
+  width: 15%;
+}
+
+header .menu ul {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+header .menu ul li {
+  color: white;
+  list-style: none;
+  font-size: 19px;
+  padding: 7.8px;
+  border-radius: 4px;
+}
+
+header .menu ul li a {
+  text-decoration: none;
+  color: white;
+  color: white;
+}
+
+header .menu ul li:hover {
+  background-color: #19529d;
+}

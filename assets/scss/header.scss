@@ -1,0 +1,65 @@
+
+// FIXME - set variables for colors 
+// variables 
+$base-color: #1A5DB4;
+$text-color: white;
+$btn-back: #19529d;
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $base-color;
+    color: $text-color;
+    height: 7.5vh;
+    padding: 0 12px;
+
+    .logo{
+
+        
+        h1{
+            font-size: 43px;
+
+            a{
+                color: white;
+
+                i{
+                    font-size: 38px;
+                }
+            }
+        }
+    }
+
+    .menu{
+        height: 100%;
+        width: 15%;
+        ul{
+            display: flex;
+            height: 100%;
+            align-items: center;
+            justify-content: space-around;        
+
+
+            li{
+                color: white;
+                list-style: none;
+                font-size: 19px;
+                padding: 7.8px;
+                border-radius: 4px;
+
+
+                a{
+                    text-decoration: none;
+                    color: white;
+                    color: $text-color;
+                }
+            }
+
+            li:hover{
+                background-color: #19529d;          
+            }
+
+            
+        }
+    }
+}
