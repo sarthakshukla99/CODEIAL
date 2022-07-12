@@ -5,12 +5,17 @@
 <div class="feed_container">
     
     <section class="feed_posts">
-        <!-- <h4>Posts</h4> -->
-        <form action="/posts/create" id="new-post-form" method="post">
-            <textarea name="content" class="textarea" cols="30" rows="3" placeholder="Hey!!... What's on your mind <% if (locals.user) { %><%= user.name %> 
-            <% } %>"></textarea>
-            <input type="submit" value="Post" class="post-btn">
-        </form>
+        
+        <% if (locals.user) { %>
+            <form action="/posts/create" id="new-post-form" method="post">
+                <textarea name="content" class="textarea" cols="30" rows="3" placeholder="Hey!!... What's on your mind <% if (locals.user) { %><%= user.name %> 
+                <% } %>"></textarea>
+                <input type="submit" value="Post" class="post-btn">
+            </form>
+
+        <% } %>
+
+        
     </section>
     <br>
     <h2>Feed Area</h1>
