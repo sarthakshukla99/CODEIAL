@@ -1,10 +1,25 @@
-<h1>Codeial | <%= title %></h1>
+<link rel="stylesheet" href="/css/home.css">
 
+<!-- <h1>Codeial | <%= title %></h1> -->
 
-<section id="feed_posts">
-    <h4>Posts</h4>
-    <form action="" id="new-post-form" method="post">
-        <textarea name="content" cols="30" rows="3"></textarea>
-        <input type="submit" value="Post">
-    </form>
-</section>
+<div class="feed_container">
+    
+    <section class="feed_posts">
+        <!-- <h4>Posts</h4> -->
+        <form action="/posts/create" id="new-post-form" method="post">
+            <textarea name="content" class="textarea" cols="30" rows="3" placeholder="Hey!!... What's on your mind <% if (locals.user) { %><%= user.name %> 
+            <% } %>"></textarea>
+            <input type="submit" value="Post" class="post-btn">
+        </form>
+    </section>
+    <br>
+    <h2>Feed Area</h1>
+
+    <% for( let post of posts) { %>
+        <section class="feed_posts posts_section">
+            <p><%= post.content %> </p>
+            <small><%= post.user.name %> </small>
+        </section>
+    
+    <% } %>
+</div>
