@@ -18,12 +18,23 @@
         
     </section>
     <br>
-    <h2>Feed Area</h1>
+    <h2 class="feed_head"> <i class="fa-solid fa-newspaper"></i> Feed Area</h1>
 
     <% for( let post of posts) { %>
         <section class="feed_posts posts_section">
-            <p><%= post.content %> </p>
-            <small><%= post.user.name %> </small>
+            <h2 class="post_content">
+                <i class="fa-solid fa-feather-pointed"></i>
+                <b> <%= post.content %>  </b></h2>
+            <form action="/comment/create" 
+            class="form_styling" method="post">
+                <textarea name="content" class="textarea" cols="30" rows="2" placeholder="Hey!!... What are your thoughts" ></textarea>
+                <input type="submit" value="Comment" class="post-btn">
+            </form>
+
+            <small class="user_name">
+                <i class="fa-solid fa-user"></i>
+                <%= post.user.name %> 
+            </small>
         </section>
     
     <% } %>
