@@ -1,6 +1,6 @@
-const Post = require('../models/posts');
+const Post = require('../models/post');
 
-let alert = require('alert'); 
+// let alert = require('alert'); 
 
 
 
@@ -22,7 +22,7 @@ module.exports.create = function(req,res){
         })
     }
     else{
-        alert('Please login first to create a post')
+        // alert('Please login first to create a post')
         return res.redirect('back')
     }
     

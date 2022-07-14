@@ -1,9 +1,11 @@
 
 // FIXME - set variables for colors 
 // variables 
-$base-color: #1A5DB4;
-$text-color: white;
-$btn-back: #19529d;
+// $base-color: #1A5DB4;
+// $text-color: white;
+// $btn-back: #19529d;
+
+@import './layout.scss';
 
 header{
     display: flex;

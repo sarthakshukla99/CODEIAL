@@ -1,4 +1,6 @@
+// my code starts ===========================
 const mongoose = require('mongoose');
+
 
 const commentSchema = new mongoose.Schema({
     content: {
@@ -16,7 +18,7 @@ const commentSchema = new mongoose.Schema({
     }
 },{
     timestamps: true
-})
+});
 
 
 const Comment = mongoose.model('Comment', commentSchema);

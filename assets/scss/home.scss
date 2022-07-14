@@ -1,8 +1,9 @@
-$base-color: #1A5DB4;
-$text-color: white;
-$btn-back: #19529d;
-$post-back: #cbe1f670;
+// $base-color: #1A5DB4;
+// $text-color: white;
+// $btn-back: #19529d;
+// $post-back: #cbe1f670;
 
+@import './layout.scss';
 
 .textarea {
     display: flex;
@@ -114,7 +115,8 @@ $post-back: #cbe1f670;
         }
 
         .user_name{
-            margin-bottom: 20px;
+            margin-top: 9px;
+            margin-bottom: 15px;
         }
     }
 
