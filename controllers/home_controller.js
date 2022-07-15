@@ -2,7 +2,15 @@
 const Posts = require('../models/post');
 module.exports.home = function(req,res){
     // populate the user/author of each post
-    Posts.find({}).populate('user').exec(function(err,posts){
+    Posts.find({})
+    .populate('user')
+    .populate({
+        path: 'comments',
+        populate:{
+            path: 'user'
+        }
+    })
+    .exec(function(err,posts){
         if(err){
             console.log('error in finding posts', err);
             return

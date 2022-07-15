@@ -58,7 +58,7 @@
 }
 
 .form_styling {
-    height: 24vh;
+    height: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -83,10 +83,13 @@
     .feed_posts {
         background-color: #fff;
         border-radius: 10px;
-
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
-
+        .item_detail_container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
         #new-post-form {
             height: 24vh;
@@ -110,7 +113,7 @@
 
         .post_content{
             font-weight: 900;
-            margin-top: 3vh;
+            margin: 3vh 0;
             text-transform: uppercase;
         }
 
@@ -120,6 +123,10 @@
         }
     }
 
+    .comment_container{
+        margin-top: 10px;
+        margin-bottom: 16px ;
+    }
     
 }
 
