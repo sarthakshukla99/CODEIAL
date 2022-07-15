@@ -1,0 +1,17 @@
+<div class="item_detail_container textarea comment_container">
+    <h3><b> <i class="fa-solid fa-comment"></i> <%= comment.content %> </b>
+    <br>
+    </h3>
+    <small class="user_name">
+
+        <% if(locals.user && locals.user.id == comment.user.id){ %>
+
+            <a href="/comments/destroy/<%= comment.id %>" class="delete"><i class="fa-solid fa-trash-can"></i></a>
+
+        <% } %> 
+       
+
+        <i class="fa-solid fa-user-pen"></i>
+        <%= comment.user.name %> 
+    </small>
+</div>

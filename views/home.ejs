@@ -23,59 +23,7 @@
 <!-- looping post items  -->
     <% for(post of posts) { %>
 
-        <section class="feed_posts posts_section">
-        <!-- if the user is signed in & the user who is signedIn is the user who Created the post  -->
-            <% if(locals.user && locals.user.id == post.user.id){ %>
-
-                <a href="/posts/destroy/<%= post.id %>">Delete Post</a>
-
-            <% } %> 
-            <div class="item_detail_container">
-                <h2 class="post_content">
-                    <i class="fa-solid fa-feather-pointed"></i>
-                    <b> <%= post.content %>  </b></h2>
-                    <small>
-                        <i class="fa-solid fa-user"></i>
-                        <%= post.user.name %> 
-                    </small>
-
-            </div>
-
-                <!-- comment form  -->
-
-                <% if(locals.user) { %>
-
-                    <form action="/comments/create" 
-                    class="form_styling" method="post">
-
-                        <textarea name="content" class="textarea" cols="30" rows="2" placeholder="Hey!!... What are your thoughts" required ></textarea>
-                        
-                        <input type="hidden" name="post" value="<%= post._id %>" >
-                        
-                        <input type="submit" value="Comment" class="post-btn">
-                    </form>
-                <% } %>
-
-                    <div class="post_comment_list">
-                        <ul id="post_comments_<%= post._id %>" >
-                            <% for( let comment of post.comments ) { %>
-
-                                <div class="item_detail_container textarea comment_container">
-                                    <h3><b> <i class="fa-solid fa-comment"></i> <%= comment.content %> </b>
-                                    <br>
-                                    </h3>
-                                    <small class="user_name">
-                                        <i class="fa-solid fa-user-pen"></i>
-                                        <%= comment.user.name %> 
-                                    </small>
-                                </div>
-                            <% } %>
-                        </ul>
-                    </div>
-                
-
-            
-        </section>
+        <%- include('_post') -%> 
     
     <% } %>
 </div>

@@ -85,6 +85,35 @@ body #layout-main {
   margin: 20px 0;
 }
 
+.posts_section {
+  margin: 20px 0;
+  padding: 0 3vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.delete i {
+  font-size: 20px;
+  color: red;
+  transition: all 0.4s ease-in-out;
+}
+
+.delete {
+  z-index: 0;
+  opacity: 0;
+  color: red;
+  text-align: center;
+  transition: all 0.4s ease-in-out;
+  margin-right: 9px;
+}
+
+.posts_section:hover .delete {
+  z-index: 1;
+  opacity: 1;
+  margin-bottom: 7px;
+}
+
 .feed_container {
   width: 70%;
   margin: auto;
@@ -111,26 +140,25 @@ body #layout-main {
   justify-content: center;
 }
 
-.feed_container .posts_section {
-  margin: 20px 0;
-  padding: 0 3vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.feed_container .posts_section .post_content {
+.feed_container .post_content {
   font-weight: 900;
   margin: 3vh 0;
   text-transform: uppercase;
+  width: 79%;
 }
 
-.feed_container .posts_section .user_name {
+.feed_container .user_name {
   margin-top: 9px;
   margin-bottom: 15px;
 }
 
-.feed_container .comment_container {
+.feed_container .hello {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s ease-in-out;
+}
+
+.comment_container {
   margin-top: 10px;
   margin-bottom: 16px;
 }
