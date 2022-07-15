@@ -36,25 +36,11 @@
 
             <div class="post_comment_list">
                 <ul id="post_comments_<%= post._id %>" >
-                    <% for( let comment of post.comments ) { %>
-
-                        <div class="item_detail_container textarea comment_container">
-                            <h3><b> <i class="fa-solid fa-comment"></i> <%= comment.content %> </b>
-                            <br>
-                            </h3>
-                            <small class="user_name">
-
-                                <% if(locals.user && locals.user.id == comment.user.id){ %>
-
-                                    <a href="/comments/destroy/<%= comment.id %>" class="delete"><i class="fa-solid fa-trash-can"></i></a>
-            
-                                <% } %> 
-                               
-
-                                <i class="fa-solid fa-user-pen"></i>
-                                <%= comment.user.name %> 
-                            </small>
-                        </div>
+                    <!-- looping comments  -->
+                    <% for(comment of post.comments ) { %>
+                        <!-- moved comment code to partial file -->
+                        <%- include('_comment') -%> 
+                        
                     <% } %>
                 </ul>
             </div>
