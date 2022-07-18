@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap');
+
+
 
 $base-color: #1A5DB4;
 $text-color: white;
@@ -15,7 +17,8 @@ $post-back: #cbe1f670;
 
 body{
     height: 100vh;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Nunito', sans-serif;
+
     // font-weight: 400;
     background-color: #e9ebee;
 

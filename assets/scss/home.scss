@@ -143,7 +143,7 @@
         .post_content{
             font-weight: 900;
             margin: 3vh 0;
-            text-transform: uppercase;
+            text-transform: capitalize;
             width: 79%;
         }
 
@@ -166,11 +166,28 @@
     .comment_container{
         margin-top: 10px;
         margin-bottom: 16px ;
+
+        p{
+            font-size: 17px;
+        }
     }
     
 
 
+// =========== home container =================================
 
+
+.home_container{
+    display: flex;
+
+    .feed_container{
+        width: 60%;
+    }
+
+    #user_friends{
+        width: 30%;
+    }
+}
 
 
 

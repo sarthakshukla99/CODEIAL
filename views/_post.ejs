@@ -1,9 +1,9 @@
 <section class="feed_posts posts_section">
         
     <div class="item_detail_container">
-        <h2 class="post_content">
+        <h3 class="post_content">
             <i class="fa-solid fa-feather-pointed"></i>
-            <b> <%= post.content %>  </b></h2>
+            <b> <%= post.content %>  </b></h3>
             <small class="hello">
                 <!-- if the user is signed in & the user who is signedIn is the user who Created the post  -->
             <% if(locals.user && locals.user.id == post.user.id){ %>
@@ -11,10 +11,10 @@
                 <a href="/posts/destroy/<%= post.id %>" class="delete"><i class="fa-solid fa-trash-can"></i></a>
 
             <% } %> 
-                <p class="post_user">
+                <b class="post_user">
                     <i class="fa-solid fa-user"></i>
                     <%= post.user.name %> 
-                </p>
+                </b>
             </small>
 
     </div>
