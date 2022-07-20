@@ -8,8 +8,9 @@
 
 .main_sign_in .sign_in_container {
   width: 30%;
-  height: 47%;
+  height: 48%;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   margin: auto;

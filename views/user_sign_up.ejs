@@ -1,11 +1,43 @@
-<h1>sign up</h1>
+<link rel="stylesheet" href="/css/user_sign_in.css">
+<div class="main_sign_in">
+    <div class="sign_in_container">
+        <h1>SIGN UP</h1>
 
-<form action="/users/create" method="post">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Your Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <div class="login_form">
+            <form action="/users/create" method="post">
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                />
 
-    <input type="submit" value="Sign Up">
-    
-</form>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                />
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Your Password"
+                    required
+                />
+
+                <input
+                    type="password"
+                    name="confirm_password"
+                    placeholder="Confirm Password"
+                    required
+                />
+
+                <input type="submit" value="Sign Up" class="submit_btn" />
+            </form>
+
+            <p><a href="/users/sign-in">Already have an account | Sign In</a></p>
+
+        </div>
+    </div>
+</div>

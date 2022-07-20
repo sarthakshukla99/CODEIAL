@@ -9,14 +9,17 @@ $base-color: #1A5DB4;
 
     .sign_in_container {
         width: 30%;
-        height: 47%;
+        height: 45%;
         display: flex;
+        justify-content: center;
         flex-direction: column;
         align-items: center;
         margin: auto;
         background-color: white;
         margin-top: 7%;
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+        
 
         h1{
             font-weight: bolder;

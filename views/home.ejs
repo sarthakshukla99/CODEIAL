@@ -23,11 +23,13 @@
         
         <h2 class="feed_head"> <i class="fa-solid fa-newspaper"></i> Feeds Area</h1>
     <!-- looping post items  -->
-        <% for(post of posts) { %>
-    
-            <%- include('_post'); -%> 
+        <div id="posts-list-container">
+            <% for(post of posts) { %>
         
-        <% } %>
+                <%- include('_post'); -%> 
+            
+            <% } %>
+        </div>
     </div>
     
     
@@ -42,3 +44,5 @@
         <% } %>
     </section>
 </div>
+
+<script src="/js/home_posts.js"></script>

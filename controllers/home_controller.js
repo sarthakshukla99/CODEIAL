@@ -8,13 +8,14 @@ module.exports.home = async function(req,res){
     try{
         // populate the user/author of each post
         let posts = await Posts.find({})
+        .sort('-createdAt')
         .populate('user')
         .populate({
             path: 'comments',    // to populate comments
             populate:{
                 path: 'user'     // to populate users of the comment
             }
-        })
+        }).sort('-createdAt')
         
         let users = await User.find({})
 
