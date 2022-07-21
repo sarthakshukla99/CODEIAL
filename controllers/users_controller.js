@@ -24,6 +24,8 @@ module.exports.update = async function(req,res){
     //     return res.status(401).send("Unauthorized");
     // }
 
+
+    // =====> if the logged in user and profile User are same
     if(req.user.id == req.params.id){
         try {
             let user = await User.findById(req.params.id);
