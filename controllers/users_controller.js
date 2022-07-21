@@ -1,4 +1,6 @@
 const User = require('../models/user')
+const path = require('path');
+const fs = require('fs');
 
 module.exports.profile = function(req,res){
     User.findById(req.params.id, function(err,user){
@@ -12,13 +14,57 @@ module.exports.profile = function(req,res){
 
 
 // update the profile page 
-module.exports.update = function(req,res){
+module.exports.update = async function(req,res){
+    // if(req.user.id == req.params.id){
+    //     User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+    //         req.flash('success', 'User Updated Successfully');
+    //         return res.redirect('back');
+    //     })
+    // }else{
+    //     return res.status(401).send("Unauthorized");
+    // }
+
     if(req.user.id == req.params.id){
-        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
-            req.flash('success', 'User Updated Successfully');
+        try {
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar(req,res, function(err){
+                if(err){console.log('***** MULTER ERROR: ', err)}
+
+                user.name = req.body.name;
+                user.email = req.body.email;
+            
+            // check if the file is getting uploaded or not as everytime we do not want to upload the file
+                if(req.file){
+                    // delete the old post from the storage/folder when new file is bieng uploaded after checking " IF USER HAS AVATAR ALREADY OR NOT"
+                    if(user.avatar){
+                        const filePath = path.join(__dirname, '..', user.avatar);
+  
+                        fs.exists(filePath, function(exists) {
+                        if(exists) {
+                            console.log('File exists. Deleting now ...');
+                            fs.unlinkSync(filePath);
+                        } else {
+                            console.log('File not found, so not deleting.');
+                        }
+                        });
+                    }
+
+
+
+                    // this is saving the path of the uploaded file into the avatar field in the user
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            })
+
+
+        } catch (err) {
+            req.flash('error',err);
             return res.redirect('back');
-        })
+        }
     }else{
+        req.flash('error', 'Unauthorized')
         return res.status(401).send("Unauthorized");
     }
 }
