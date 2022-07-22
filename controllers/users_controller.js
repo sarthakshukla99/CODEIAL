@@ -25,17 +25,18 @@ module.exports.update = async function(req,res){
     // }
 
 
-    // =====> if the logged in user and profile User are same
+    // =====>> if the logged in user and profile User are same
     if(req.user.id == req.params.id){
         try {
             let user = await User.findById(req.params.id);
+            
             User.uploadedAvatar(req,res, function(err){
                 if(err){console.log('***** MULTER ERROR: ', err)}
 
                 user.name = req.body.name;
                 user.email = req.body.email;
             
-            // check if the file is getting uploaded or not as everytime we do not want to upload the file
+            // check if the file is getting uploaded or not as every time we do not want to upload the file
                 if(req.file){
                     // delete the old post from the storage/folder when new file is bieng uploaded after checking " IF USER HAS AVATAR ALREADY OR NOT"
                     if(user.avatar){
