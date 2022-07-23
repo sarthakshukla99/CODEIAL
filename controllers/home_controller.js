@@ -2,6 +2,7 @@
 const Posts = require('../models/post');
 const User = require('../models/user');
 
+
 module.exports.home = async function(req,res){
     // ASYNC AWAIT 
 
@@ -16,6 +17,7 @@ module.exports.home = async function(req,res){
                 path: 'user'     // to populate users of the comment
             }
         })
+
         
         let users = await User.find({})
 
