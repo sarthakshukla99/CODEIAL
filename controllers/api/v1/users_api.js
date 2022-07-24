@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 module.exports.createSession = async function(req,res){
 
     try {
+        // whenever the userName & password is received , we need to find that user and generate the JWT corresponding to that user 
         let user = await User.findOne({email: req.body.email})  
 
         if(!user || user.password != req.body.password){
@@ -15,8 +16,9 @@ module.exports.createSession = async function(req,res){
 
         return res.json(200, {
             message: 'Sign in successful, here is your token, please keep it safe!!',
+            // creating a token 
             data: {
-                token: jwt.sign(user.toJSON(), 'codeial', {expiresIn: '10000'})
+                token: jwt.sign(user.toJSON(), 'codeial', {expiresIn: '1000000'})
             }
         })
         
