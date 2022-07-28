@@ -146,6 +146,8 @@ body #layout-main {
   margin: 3vh 0;
   text-transform: capitalize;
   width: 79%;
+  word-spacing: 4px;
+  line-height: 23px;
 }
 
 .feed_container .user_name {

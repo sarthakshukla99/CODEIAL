@@ -28,14 +28,15 @@ module.exports.index = async function(req,res){
 module.exports.destroy = async function(req,res){
 
     try {
-
+        //finding posts
         let post = await Post.findById(req.params.id);
         
+        // authenticating user
         if(post.user == req.user.id){
-
         
             post.remove();
 
+            // and deleting all the comments in the post
             await Comment.deleteMany({post: req.params.id});
 
 
@@ -43,7 +44,7 @@ module.exports.destroy = async function(req,res){
                 message: 'Posts and associated comments deleted successfully'
             });
         }
-        else{
+        else{   // if user is not authenticated
             return res.json(401,{
                 message: 'You cant delete this post'
             })
