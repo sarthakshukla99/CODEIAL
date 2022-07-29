@@ -2,12 +2,14 @@ const Comment = require('../models/comment');
 
 const Post = require('../models/post');
 
+const commentsMailer = require('../mailers/comment_mailer');
+
 module.exports.create = async function(req,res){
 
     try {
         let post = await Post.findById(req.body.post)
         // if we have the post then only we will add the comment
-        console.log('here inside comment cont',post);
+        // console.log('here inside comment cont',post);
 
         if(post){
             console.log('post available');
@@ -15,12 +17,19 @@ module.exports.create = async function(req,res){
                 content: req.body.content,
                 post: req.body.post,
                 user: req.user._id
-            })
+            });
 
             // create the comment
-            // FIXME ASK ABOUT po
             post.comments.push(comment);
-            post.save()      
+            post.save();
+            
+            // comment = comment.populate('user', 'name email').execPopulate();
+
+            comment = await comment.populate('user', 'name email');
+            // console.log('adddd');
+            commentsMailer.newComment(comment);
+
+
             req.flash('success', 'Comment Added Successfully');
             return res.redirect('/');
                 
@@ -31,6 +40,7 @@ module.exports.create = async function(req,res){
         return
     }
 
+} 
 
 
 // =================== OLD CODE ==============================
@@ -69,7 +79,7 @@ module.exports.create = async function(req,res){
     //     }
     
     // })
-} 
+
 
 
 module.exports.destroy = async function(req,res){
