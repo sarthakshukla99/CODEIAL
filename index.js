@@ -1,4 +1,5 @@
 const express = require('express');
+const env = require('./config/environment');
 const cookieParser = require('cookie-parser')
 const app = express();
 const port = 3000;
@@ -30,20 +31,22 @@ var cors = require('cors')
 app.use(cors())
 // =============
 
+const path = require('path');
 
-
-app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
-    debug: true,
-    outputStyle: 'expanded',
-    prefix:'/css'
-}))
+if(env.name == 'development'){
+    app.use(sassMiddleware({
+        src: path.join(__dirname, env.asset_path, '/scss'),
+        dest: path.join(__dirname, env.asset_path, '/css'),
+        debug: true,
+        outputStyle: 'expanded',
+        prefix:'/css'
+    }))
+}
 
 
 app.use(express.urlencoded());
 app.use(cookieParser());
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 
 // make the uploads path available to the browser
 app.use('/uploads', express.static(__dirname + '/uploads'));
@@ -66,7 +69,7 @@ app.set('views','./views');
 app.use(session({
     name: 'codeial', //name of the cookie
     //TODO change the secret before deployment in production mode
-    secret: 'blahsomething', // key to encode cookie
+    secret: env.session_cookie_key, // key to encode cookie
     saveUninitialized: false,
     resave: false,
     cookie: {
